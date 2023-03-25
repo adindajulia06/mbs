@@ -1,4 +1,4 @@
-# mbsid
+# mbs
 
 Mikrotik Billing System Generate Voucher Hotspot PHP
 
@@ -15,8 +15,7 @@ Added website settings
 - Clone the repo: `git clone https://github.com/addrmwn/mbs.git`
 - Edit Mainconfig.php
 - adjust to your configuration starting from base url to database
-- import the mbsid.sql file which is in the database folder, into your phpmyadmin
-- Rename File htaccess to .htaccess
+- import the mbs.sql file which is in the database folder, into your phpmyadmin
 
 # Login
 
