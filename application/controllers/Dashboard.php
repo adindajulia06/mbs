@@ -378,8 +378,74 @@ class Dashboard extends CI_Controller
             ];
             $this->load->view('router/hotspot/profile', $data);
         } else {
-            $this->session->set_flashdata('message_err', 'Mikrotik tidak konek ! Harap dicek kembali data mikrotik anda');
+            $this->session->set_flashdata('message_err', 'Router Not Connected');
             redirect(base_url('router/setting'));
+        }
+    }
+
+    public function hotspot_active()
+    {
+        $dataweb = new M_website();
+        $voucher = new M_dashboard();
+
+        $server = $voucher->get('router');
+
+        foreach ($server->result_array() as $row) {
+            $host = $row['ip'];
+            $uname = $row['username'];
+            $pass = decrypt($row['password']);
+        }
+
+        $API = new API();
+        if ($API->connect($host, $uname, $pass)) {
+
+            // get hotspot info
+            $hotspotactive = $API->comm("/ip/hotspot/active/print");
+
+
+            $data = [
+                'title' => 'Hotspot Active',
+                'logo' => $dataweb->website()->logo,
+                'logotext' => $dataweb->website()->logo_text,
+                'author' => $dataweb->website()->author,
+                'totalhotspotactive' => count($hotspotactive),
+                'hotspotactive' => $hotspotactive,
+
+
+            ];
+            $this->load->view('router/hotspot/active', $data);
+        } else {
+            $this->session->set_flashdata('message_err', 'Router Not Connected');
+            redirect(base_url('router/setting'));
+        }
+    }
+
+    public function delete_hotspot_active($id = null)
+    {
+        $admin = new M_admin();
+
+        if ($id == null) {
+            redirect(base_url('router/hotspot/active'));
+        } else {
+            $server = $admin->get('router');
+
+            foreach ($server->result_array() as $row) {
+                $host = $row['ip'];
+                $uname = $row['username'];
+                $pass = decrypt($row['password']);
+            }
+
+            $API = new API();
+            if ($API->connect($host, $uname, $pass)) {
+                $API->comm("/ip/hotspot/active/remove", array(
+                    ".id" => '*' . $id,
+                ));
+                $this->session->set_flashdata('message_success', 'User tersebut berhasil di hapus dari hotspot active');
+                redirect('router/hotspot/active');
+            } else {
+                $this->session->set_flashdata('message_err', 'Router Not Connected');
+                redirect(base_url('router/setting'));
+            }
         }
     }
 
@@ -410,6 +476,10 @@ class Dashboard extends CI_Controller
             $this->session->set_flashdata('message_err', 'Router not connected');
             redirect(base_url('router/setting'));
         }
+    }
+
+    public function report()
+    {
     }
 
     public function account_setting()
@@ -483,5 +553,18 @@ class Dashboard extends CI_Controller
 
     public function website_setting()
     {
+    }
+
+    public function changelogs()
+    {
+        $dataweb = new M_website();
+
+        $data = [
+            'title' => 'Changelogs',
+            'logotext' => $dataweb->website()->logo_text,
+            'logo' => $dataweb->website()->logo,
+            'author' => $dataweb->website()->author,
+        ];
+        $this->load->view('changelogs', $data);
     }
 }

@@ -59,14 +59,14 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="<?php echo base_url(); ?>"><?php echo $logotext ?></a>
+                        <a href="<?php echo base_url(); ?>home"><?php echo $logotext ?></a>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="<?php echo base_url(); ?>"><?php echo $logotext ?></a>
+                        <a href="<?php echo base_url(); ?>home"><?php echo $logotext ?></a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
-                        <li><a class="nav-link" href="<?php echo base_url(); ?>"><i class="fas fa-home"></i> <span>Halaman Utama</span></a></li>
+                        <li><a class="nav-link" href="<?php echo base_url(); ?>home"><i class="fas fa-home"></i> <span>Halaman Utama</span></a></li>
 
                         <li class="menu-header">Services</li>
 
@@ -74,10 +74,9 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-wifi"></i> <span>Hotpsot</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/hotspot/active">Hotspot Active</a></li>
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/hotspot/adduser">Add User</a></li>
                                 <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/hotspot/generate">Generate Voucher</a></li>
                                 <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/hotspot/list">List Voucher</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/hotspot/adduser">Add User</a></li>
 
 
                             </ul>
@@ -97,6 +96,7 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-server"></i> <span>Menu Router</span></a>
                             <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/hotspot/active">Hotspot Active</a></li>
                                 <li><a class="nav-link" href="<?php echo base_url(); ?>router/hotspot/profile">Hotspot Profile</a></li>
                                 <li><a class="nav-link" href="<?php echo base_url(); ?>router/reboot">Restart Router</a></li>
                                 <li><a class="nav-link" href="<?php echo base_url(); ?>router/setting">Pengaturan Router</a></li>

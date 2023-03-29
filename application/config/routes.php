@@ -54,12 +54,21 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
+// Home 
+
+$route['home'] = 'Dashboard/index';
+
 // <!-- Router Area -->
-// Router
+
+
 
 $route['router/setup'] = 'Dashboard/router_setup';
 $route['router/setting'] = 'Dashboard/router_setting';
+$route['router/hotspot/profile'] = 'Dashboard/hotspot_profile';
+$route['router/hotspot/active'] = 'Dashboard/hotspot_active';
 
+
+$route['router/hotspot/deleteactive/(:any)'] = 'Dashboard/delete_hotspot_active/$1';
 
 // Account Setting
 
@@ -72,9 +81,10 @@ $route['voucher/hotspot/profile'] = 'Dashboard/profile_voucher';
 $route['voucher/hotspot/profile/add'] = 'Dashboard/addprofile_voucher';
 
 
-// Router Area
+// Dashboard Area
 
-$route['router/hotspot/profile'] = 'Dashboard/hotspot_profile';
+$route['changelogs'] = 'Dashboard/changelogs';
+
 
 
 
