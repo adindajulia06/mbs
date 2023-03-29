@@ -1,14 +1,9 @@
 # mbs
 
-Mikrotik Billing System Generate Voucher Hotspot PHP
+Mikrotik Billing System Generate Voucher Hotspot With PHP + Mysql
 
 ![mbsid](https://user-images.githubusercontent.com/50067501/155041341-c3da864a-3f37-4fa5-835b-4bc5ad03a3c6.png)
 
-# Changelogs
-
-22-02-2022 <br>
-Added Multi Language ( Currently only available in Indonesian and English )<br>
-Added website settings
 
 # Installation
 
