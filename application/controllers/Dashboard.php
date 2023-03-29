@@ -262,7 +262,7 @@ class Dashboard extends CI_Controller
         $datadb = $voucher->get('services');
 
         if ($datadb->num_rows() == 0) {
-            redirect(base_url('voucher/hotspot/addprofile'));
+            redirect(base_url('voucher/hotspot/profile/add'));
         } else {
             $server = $voucher->get('router');
 
@@ -332,6 +332,51 @@ class Dashboard extends CI_Controller
 
             ];
             $this->load->view('voucher/hotspot/profile', $data);
+        } else {
+            $this->session->set_flashdata('message_err', 'Mikrotik tidak konek ! Harap dicek kembali data mikrotik anda');
+            redirect(base_url('router/setting'));
+        }
+    }
+
+
+    public function hotspot_profile()
+    {
+        $dataweb = new M_website();
+        $voucher = new M_dashboard();
+
+        $server = $voucher->get('router');
+
+        foreach ($server->result_array() as $row) {
+            $host = $row['ip'];
+            $uname = $row['username'];
+            $pass = decrypt($row['password']);
+        }
+
+        $API = new API();
+        if ($API->connect($host, $uname, $pass)) {
+
+            // get hotspot info
+            $getprofile = $API->comm("/ip/hotspot/user/profile/print");
+
+            $getpool = $API->comm("/ip/pool/print");
+
+            $getallqueue = $API->comm("/queue/simple/print", array(
+                "?dynamic" => "false",
+            ));
+            $data = [
+                'title' => 'Hotspot Profile',
+                'logo' => $dataweb->website()->logo,
+                'logotext' => $dataweb->website()->logo_text,
+                'author' => $dataweb->website()->author,
+                'totalhotspotprofile' => $voucher->get('services')->num_rows(),
+                'hotspotprofile' => $voucher->get('services')->result(),
+                'getprofile' => $getprofile,
+                'pool' => $getpool,
+                'queue' => $getallqueue,
+
+
+            ];
+            $this->load->view('router/hotspot/profile', $data);
         } else {
             $this->session->set_flashdata('message_err', 'Mikrotik tidak konek ! Harap dicek kembali data mikrotik anda');
             redirect(base_url('router/setting'));

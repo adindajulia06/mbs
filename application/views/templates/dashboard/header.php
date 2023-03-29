@@ -97,7 +97,7 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-server"></i> <span>Menu Router</span></a>
                             <ul class="dropdown-menu">
-
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/hotspot/profile">Hotspot Profile</a></li>
                                 <li><a class="nav-link" href="<?php echo base_url(); ?>router/reboot">Restart Router</a></li>
                                 <li><a class="nav-link" href="<?php echo base_url(); ?>router/setting">Pengaturan Router</a></li>
 

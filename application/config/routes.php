@@ -72,6 +72,12 @@ $route['voucher/hotspot/profile'] = 'Dashboard/profile_voucher';
 $route['voucher/hotspot/profile/add'] = 'Dashboard/addprofile_voucher';
 
 
+// Router Area
+
+$route['router/hotspot/profile'] = 'Dashboard/hotspot_profile';
+
+
+
 // Report
 
 $route['pages/report'] = 'Dashboard/report';
