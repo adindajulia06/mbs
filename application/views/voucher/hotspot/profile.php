@@ -26,7 +26,6 @@
                                             <th>Harga</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
-                                            <th>Status Sinkron</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -37,20 +36,25 @@
                                         ?>
                                             <?php $id = str_replace('*', '', $row['.id']) ?>
                                             <td>
-                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-<?= $id ?>"><i class="material-icons-outlined">delete</i>Hapus Profile </button>
-                                                <a href="<?= base_url("admin/router/ppp/profile/edit/" . $id) ?>" class="btn btn-sm btn-warning"><i class='material-icons-outlined'>edit</i><strong>Edit</strong></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete-<?= $id ?>"><i class="fas fa-trash"></i>Hapus Profile </button>
+                                                <a href="<?= base_url("router/hotspot/profile/edit/" . $id) ?>" class="btn btn-sm btn-warning"><i class='fas fa-edit'></i><strong>Edit</strong></a>
 
                                             </td>
 
                                             <td><?= $row['name'] ?></td>
                                             <td><?= $row['shared-users'] ?></td>
                                             <td><?= $row['rate-limit'] ?></td>
-                                            <td align="center">
-                                            </td>
-                                            <td></td>
+
+                                            <td align="center"><label class="btn btn-success"> Ambil data profile</label></td>
+
+
+
+
                                             </tr>
                                         <?php
+
                                         }
+
 
 
                                         ?>

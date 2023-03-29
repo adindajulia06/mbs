@@ -64,10 +64,14 @@ $route['router/setting'] = 'Dashboard/router_setting';
 // Account Setting
 
 $route['account/setting'] = 'Dashboard/account_setting';
-
+$route['website/setting'] = 'Dashboard/website_setting';
 
 //  Voucher Area
-
 $route['voucher/hotspot/generate'] = 'Dashboard/generate_voucher';
 $route['voucher/hotspot/profile'] = 'Dashboard/profile_voucher';
 $route['voucher/hotspot/profile/add'] = 'Dashboard/addprofile_voucher';
+
+
+// Report
+
+$route['pages/report'] = 'Dashboard/report';

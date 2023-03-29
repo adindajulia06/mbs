@@ -49,7 +49,7 @@
                                 <i class="fas fa-cog"></i> Settings
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="<?php echo base_url(); ?>logout" class="dropdown-item has-icon text-danger">
+                            <a href="<?php echo base_url(); ?>auth/signout" class="dropdown-item has-icon text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </div>
@@ -69,25 +69,16 @@
                         <li><a class="nav-link" href="<?php echo base_url(); ?>"><i class="fas fa-home"></i> <span>Halaman Utama</span></a></li>
 
                         <li class="menu-header">Services</li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-server"></i> <span>Menu Router</span></a>
-                            <ul class="dropdown-menu">
 
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/kat_router">Kategori Router</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/data_router">Data Router</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/test_login">Test Login</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/add_profile">Tambah User Profile</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/list_profile">List User Profile</a></li>
-
-                            </ul>
-                        </li>
 
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-wifi"></i> <span>Hotpsot</span></a>
                             <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/hotspot/active">Hotspot Active</a></li>
                                 <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/hotspot/generate">Generate Voucher</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/list">List Voucher</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/adduser">Add User</a></li>
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/hotspot/list">List Voucher</a></li>
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/hotspot/adduser">Add User</a></li>
+
 
                             </ul>
                         </li>
@@ -103,6 +94,15 @@
 
                         <li><a class="nav-link" href="<?php echo base_url(); ?>pages/report"><i class="fas fa-money-check"></i> <span>Report</span></a></li>
 
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-server"></i> <span>Menu Router</span></a>
+                            <ul class="dropdown-menu">
+
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/reboot">Restart Router</a></li>
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/setting">Pengaturan Router</a></li>
+
+                            </ul>
+                        </li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-cog"></i> <span>Pengaturan</span></a>
                             <ul class="dropdown-menu">

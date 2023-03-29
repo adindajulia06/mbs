@@ -125,4 +125,14 @@ class M_dashboard extends CI_Model
 
         return $this->db->update($tablenya, $data);
     }
+
+    public function account($username)
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->like("username", $username);
+        $query = $this->db->get();
+
+        return $query;
+    }
 }

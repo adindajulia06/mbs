@@ -39,20 +39,18 @@ class Auth extends CI_Controller
 
         $user = $this->db->where('username', $username)
             ->get('users')->row_array();
-
-
-
         if ($user) {
             if ($user['level'] == 'Admin') {
                 if (password_verify($password, $user['password'])) {
                     $data = [
                         'id' => $user['id'],
+                        'username' => $user['username'],
                         'nama' => $user['nama'],
                         'level' => $user['level'],
                         'status' => "login",
                     ];
                     $this->session->set_userdata($data);
-                    redirect(base_url('dashboard'));
+                    redirect(base_url('router/setting'));
                 } else {
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Password salah !</div>');
                     $this->session->set_flashdata('message_err', 'Password Salah !');

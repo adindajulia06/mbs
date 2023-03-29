@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller
         $this->load->model('M_dashboard');
         $this->load->model('M_website');
         $this->nama = $this->session->userdata('nama');
+        $this->username = $this->session->userdata('username');
 
         $this->onlogin = $this->session->userdata('status', 'login');
 
@@ -364,5 +365,78 @@ class Dashboard extends CI_Controller
             $this->session->set_flashdata('message_err', 'Router not connected');
             redirect(base_url('router/setting'));
         }
+    }
+
+    public function account_setting()
+    {
+        $dataweb = new M_website();
+        $user = new M_dashboard();
+
+        $data = [
+            'title' => 'Pengaturan Akun',
+            'logotext' => $dataweb->website()->logo_text,
+            'logo' => $dataweb->website()->logo,
+            'author' => $dataweb->website()->author,
+            'user' => $user->account($this->username)->row_array(),
+        ];
+        $this->load->view('account/setting', $data);
+    }
+
+    public function changepassword()
+    {
+        $dataweb = new M_website();
+
+        $data['title'] = "Pengaturan Akun";
+        $data['logotext'] = $dataweb->website()->logo_text;
+        $data['logo'] = $dataweb->website()->logo;
+        $data['author'] = $dataweb->website()->author;
+        $data['user'] = $this->db->get_where('users', ['username' =>
+        $this->session->userdata('username')])->row_array();
+
+        $this->form_validation->set_rules('currentpassword', 'currentpassword', 'trim|required', array(
+            'required' => 'Masukan Password saat ini'
+        ));
+
+        $this->form_validation->set_rules('new_password', 'new_password', 'trim|required|matches[repeat_password]', array(
+            'required' => 'Masukan Password.',
+            'matches' => 'Password Tidak Sama.',
+        ));
+        $this->form_validation->set_rules('repeat_password', 'repeat_password', 'trim|required|matches[new_password]', array(
+            'required' => 'Masukan Password.',
+            'matches' => 'Password Tidak Sama.',
+        ));
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('account/setting', $data);
+        } else {
+            $currentpassword = $this->input->post('currentpassword');
+            $newpassword    = $this->input->post('new_password');
+
+            if (!password_verify($currentpassword, $data['user']['password'])) {
+                $this->session->set_flashdata('gagal', '<div class="alert alert-danger" role="alert"> Password Sebelumnya Salah </div>');
+                $this->session->set_flashdata('message_err', 'Password Sebelumnya Salah');
+
+                redirect('account/setting');
+            } else {
+                if ($currentpassword == $newpassword) {
+                    $this->session->set_flashdata('gagal', '<div class="alert alert-danger" role="alert"> Password Tidak Boleh Sama Dengan Sebelumnya</div>');
+                    redirect('account/setting');
+                } else {
+                    $password_hash = password_hash($newpassword, PASSWORD_DEFAULT);
+
+                    $this->db->set('password', $password_hash);
+                    $this->db->where('username', $this->session->userdata('username'));
+                    $this->db->update('users');
+
+                    $this->session->set_flashdata('message_success', 'Password berhasil diganti !');
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert"></div>');
+                    redirect('account/setting');
+                }
+            }
+        }
+    }
+
+    public function website_setting()
+    {
     }
 }

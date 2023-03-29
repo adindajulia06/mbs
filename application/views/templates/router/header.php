@@ -49,7 +49,7 @@
                                 <i class="fas fa-cog"></i> Settings
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="<?php echo base_url(); ?>logout" class="dropdown-item has-icon text-danger">
+                            <a href="<?php echo base_url(); ?>auth/signout" class="dropdown-item has-icon text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </div>
@@ -69,37 +69,15 @@
                         <li><a class="nav-link" href="<?php echo base_url(); ?>"><i class="fas fa-home"></i> <span>Halaman Utama</span></a></li>
 
                         <li class="menu-header">Services</li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-server"></i> <span>Menu Router</span></a>
-                            <ul class="dropdown-menu">
-
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/kat_router"></a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/data_router">Data Router</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/test_login">Test Login</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/add_profile">Tambah User Profile</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>router/list_profile">List User Profile</a></li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-credit-card"></i> <span>Voucher</span></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/generate">Generate Voucher</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>voucher/list">List Voucher</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="nav-link" href="<?php echo base_url(); ?>pages/report"><i class="fas fa-money-check"></i> <span>Report</span></a></li>
 
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-cog"></i> <span>Pengaturan</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>user/setting">Pengaturan Akun</a></li>
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>user/setweb">Pengaturan Website</a></li>
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>account/setting">Pengaturan Akun</a></li>
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>website/setting">Pengaturan Website</a></li>
 
                             </ul>
                         </li>
-
-
                     </ul>
 
                     <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
